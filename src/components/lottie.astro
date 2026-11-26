@@ -1,0 +1,23 @@
+---
+const {
+  src,
+  loop = true,
+  autoplay = true,
+  speed = 1,
+  id = "lottiePlayer",
+  class: className = ""
+} = Astro.props;
+---
+
+
+<script type="module" src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"></script>
+
+<dotlottie-player
+  id={id}
+  class={className}
+  src={src}
+  background="transparent"
+  speed={speed}
+  loop={loop}
+  autoplay={autoplay}
+  />

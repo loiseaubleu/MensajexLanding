@@ -1,0 +1,187 @@
+.landing-inicio {
+  min-height: 100vh; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  align-items: center; 
+  text-align: center;
+  padding: clamp(1rem, 4vw, 4rem);
+}
+
+.Titulo {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  text-align: center; 
+}
+
+.logo1 {
+  position: relative;
+  width: clamp(200px, 60vw, 600px);
+}
+
+.texto {
+  position: relative;
+  text-align: left;
+}
+
+.texto > h1 {
+  position: relative;
+  font-size: clamp(2rem, 5vw, 3.125rem); 
+  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;   
+}
+
+.Tarjeta-pre {
+  position: relative;
+  background: white;
+  color: #0773b1;
+  padding: clamp(0.6rem, 2vw, 2rem);
+  border-radius: 8px;
+  box-shadow: 0 0 15px #044c77;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  z-index: 0;
+  width: 100%;
+  max-width: 400px;
+  text-align: justify;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.Tarjeta-pre p {
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  line-height: 1.5;
+}
+
+.Tarjeta-pre::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  right: -12px;
+  bottom: -12px;
+  background: linear-gradient(270deg, #0773b1, #0f1231, #883071);
+  background-size: 400%;
+  z-index: -1;
+  border-radius: 12px;
+  opacity: 1;
+  animation: borderGlow 4s linear infinite;
+}
+
+.Tarjeta-pre::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: #0f1231;
+  border-radius: 6px;
+  z-index: -1;
+}
+
+@keyframes borderGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.Duo {
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  gap: clamp(1rem, 5vw, 3rem); 
+  flex-wrap: wrap; 
+}
+
+.RoboBro {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  width: clamp(160px, 25vw, 260px);
+  max-width: 100%;
+}
+
+
+.botones {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: clamp(1rem, 4vw, 2rem);
+  flex-wrap: wrap;
+}
+
+.botones .btn {
+  font-family: 'Orbitron', sans-serif;
+  min-width: clamp(100px, 40vw, 300px);
+  text-transform: uppercase;
+  font-size: clamp(1.2rem, 2vw, 1.6rem); 
+  color: #0773b1;
+  background: rgba(27, 10, 23, 0.6); 
+  padding: clamp(0.4rem, 1vw, 0.6rem) clamp(1rem, 3vw, 1.5rem);
+  border-radius: 999px;
+  border: 2px solid rgba(27, 10, 23, 0.6); 
+  box-shadow: 0 0 30px #0773b1;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.botones .btn:hover {
+  background: rgba(66, 23, 55, 0.8);
+  color: #00ffff;
+  box-shadow: 0 0 18px #00ffff80;
+  transform: scale(1.05);
+}
+
+@media (max-width: 48rem) {
+  .landing-inicio {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    align-content: center;
+    gap: clamp(1rem, 4vw, 2rem);
+    padding: 4.5rem clamp(0.875rem, 4vw, 2rem) 1.75rem;
+  }
+
+  .Titulo,
+  .botones {
+    width: min(100%, 25rem);
+  }
+
+  .logo1 {
+    width: min(100%, 18rem);
+  }
+
+  .Tarjeta-pre {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    text-align: left;
+  }
+
+  .Tarjeta-pre p {
+    margin: 0;
+    font-size: clamp(0.85rem, 3vw, 1rem);
+  }
+
+  .botones {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr));
+    gap: 0.5rem;
+  }
+
+  .botones .btn {
+    min-width: 0;
+    min-height: 2.75rem;
+    padding: 0.4rem 0.45rem;
+    font-size: clamp(0.8rem, 3.2vw, 1rem);
+  }
+}

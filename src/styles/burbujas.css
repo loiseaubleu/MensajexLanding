@@ -1,0 +1,102 @@
+.Burbujas {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  max-width: clamp(220px, 40vw, 400px);
+  position: relative;
+}
+
+/* Estilo base para ambas burbujas */
+.Bubble,
+.Bubble2 {
+  position: relative;
+  background-color: white;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  padding: 0.75rem 1rem;
+  color: #333;
+  font-size: clamp(12px, 2.5vw, 14px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+  max-width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  /* transition: opacity 1.5s ease-out, transform 1.5s ease-out; */
+  /* transition: opacity 1.5s ease-out, transform 0.4s ease-in; */
+
+}
+
+/* Aparecen */
+.Bubble.mostrar,
+.Bubble2.mostrar {
+  opacity: 1;
+  transform: translateY(0);
+  /* transition: opacity 1.5s ease-out, transform 0.4s ease-in; */
+}
+
+/* Cola estilo chat para Bubble2 (derecha) */
+.Bubble2 {
+  align-self: flex-end;
+  background-color: #eef5ff;
+  border-color: #bcd3f0;
+}
+.Bubble::after {
+  content: '';
+  position: absolute;
+  left: -20px; /* más a la izquierda */
+  top: 28px;    /* más abajo */
+  border: 10px solid transparent;
+  border-right-color: white;
+  filter: drop-shadow(-1px 0px 1px rgba(0, 0, 0, 0.1));
+}
+
+.Bubble2::after {
+  content: '';
+  position: absolute;
+  right: -20px; /* más a la derecha */
+  top: 28px;    /* más abajo */
+  border: 10px solid transparent;
+  border-left-color: #eef5ff;
+  filter: drop-shadow(1px 0px 1px rgba(0, 0, 0, 0.1));
+}
+
+.Bubble,
+.Bubble2,
+.aparecer {
+  transition: 
+    opacity 1.6s ease-out, 
+    transform 1.6s ease-out;
+}
+.Bubble:not(.mostrar),
+.Bubble2:not(.mostrar),
+.aparecer:not(.mostrar) {
+  transition: 
+    opacity 0.2s ease-in, 
+    transform 0.4s ease-in;
+}
+
+
+.aparecer {
+  opacity: 0;
+  transform: translateY(20px);
+  /* transition: opacity 1.5s ease-out, transform 1.5s ease-out; */
+}
+
+.aparecer.mostrar {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 📱 Móvil: ocultamos las burbujas */
+@media (max-width: 758px) {
+  .Burbujas {
+    display: none !important;
+  }
+
+  .Bubble,
+  .Bubble2 {
+    font-size: 0.6rem;
+    padding: 0.55rem 1rem;
+  }
+}

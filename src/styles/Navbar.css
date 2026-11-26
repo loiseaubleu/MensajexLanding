@@ -1,0 +1,54 @@
+.toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 3vw, 1.5rem);
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.25rem, 2vw, 1.5rem);
+
+  background: linear-gradient(
+    90deg,
+    rgba(27, 10, 23, 0.6) 0%,
+    rgba(27, 10, 23, 0.6) 40%,
+    rgba(66, 23, 55, 0.6) 50%,
+    rgba(27, 10, 23, 0.6) 60%,
+    rgba(27, 10, 23, 0.6) 100%
+  );
+  background-size: 200% 100%;
+  animation: slideGradient 4s linear infinite;
+  box-shadow: 0 0 50px #411736;
+  box-sizing: border-box;
+}
+
+@keyframes slideGradient {
+  0% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.ButtonNav {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  color: #0773b1;
+  background: rgba(27, 10, 23, 0);
+  background-size: 200% 100%;
+  animation: slideGradient 4s linear infinite;
+  padding: clamp(0.25rem, 1vw, 0.4rem) clamp(0.45rem, 2.5vw, 1.2rem);
+  border: 2px solid rgba(27, 10, 23, 0);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.ButtonNav:hover {
+  background: rgba(14, 5, 12, 0.653); 
+  color: #00ffff; 
+  box-shadow: 0 0 12px #00ffff50; 
+  transform: scale(1.05); 
+}

@@ -1,0 +1,40 @@
+---
+import logo from '../assets/logoMensajex.svg';
+import robot from '../assets/robot-poster.webp';
+
+interface Props {
+  name: 'logo' | 'robot';
+}
+
+const { name } = Astro.props;
+---
+
+<div class:list={['landing-animation', name]} data-animation={name}>
+  <img src={name === 'logo' ? logo.src : robot.src} alt={name === 'logo' ? "Mensajex" : ""} decoding="async" />
+  <div class="player" data-player aria-hidden="true"></div>
+</div>
+
+<style>
+  .landing-animation {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+  }
+
+  .logo {
+    aspect-ratio: 1920 / 516;
+  }
+
+  img,
+  .player {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  [data-playing] img {
+    visibility: hidden;
+  }
+</style>

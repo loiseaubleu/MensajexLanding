@@ -1,0 +1,159 @@
+.phone-list {
+    position: relative;
+    font-family: monospace;
+    height: 20em;
+    width: clamp(140px, 40vw, 200px);
+  }
+
+  .phone-number {
+    width: clamp(140px, 40vw, 200px);
+    position: absolute;
+    transition: top 1s ease, left 1s ease, opacity 1s ease, font-size 0.5s ease;
+    opacity: 1;
+    font-size: 1.4rem;
+    right: 0;
+  }
+
+
+  .faded {
+    opacity: 0;
+  }
+
+  .shift-small {
+    right: 9px;
+  }
+
+  .shift-center {
+    right: 15px;
+  }
+
+  .center {
+    font-size: 1.6rem;
+  }
+  /* Posiciones específicas de los 7 elementos */
+  .pos-0 { top: 0%; }
+  .pos-1 { top: 14%; }
+  .pos-2 { top: 28%; }
+  .pos-3 { top: 42%; }
+  .pos-4 { top: 56%; }
+  .pos-5 { top: 70%; }
+  .pos-6 { top: 84%; }
+
+.phone-number.active {
+  position: relative;
+  overflow: hidden;
+  color: #0f0;
+}
+
+.phone-number.active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 255, 0, 0.1), rgba(0, 255, 0, 0.5), rgba(0, 255, 0, 0.1));
+  animation: glow-sweep 1s ease-out forwards;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.phone-number.active::after {
+  content: "✓";
+  position: absolute;
+  right: -1.4em;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0f0;
+  font-weight: bold;
+  font-size: 1.2em;
+  animation: check-appear 1s ease-out forwards;
+  opacity: 0;
+  z-index: 2;
+}
+
+@keyframes glow-sweep {
+  0% {
+    left: -100%;
+    opacity: 1;
+  }
+  70% {
+    left: 100%;
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes check-appear {
+  0% {
+    right: -1.4em;
+    opacity: 0;
+  }
+  40% {
+    right: 0.2em;
+    opacity: 1;
+  }
+  70% {
+    right: 0.2em;
+    opacity: 1;
+  }
+  100% {
+    right: 1.4em;
+    opacity: 0;
+  }
+}
+
+.phone-number.red-glow {
+  animation: red-glow 4s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.phone-number.red-glow::after {
+  content: '❌';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2em;
+  right: -1.4em;
+  opacity: 0;
+  animation: cross-appear 4s ease-out;
+}
+
+/* Brillo rojo de izquierda a derecha */
+@keyframes red-glow {
+  0% {
+    box-shadow: inset 0 0 0 0 rgba(255, 0, 0, 0.7);
+    background: none;
+  }
+  30% {
+    box-shadow: inset 200px 0 0 0 rgba(255, 0, 0, 0.3);
+  }
+  100% {
+    box-shadow: inset 0 0 0 0 rgba(255, 0, 0, 0);
+    background: none;
+  }
+}
+
+/* Equis aparece, se queda y se va */
+@keyframes cross-appear {
+  0% {
+    right: -1.4em;
+    opacity: 0;
+  }
+  40% {
+    right: 0.2em;
+    opacity: 1;
+  }
+  70% {
+    right: 0.2em;
+    opacity: 1;
+  }
+  100% {
+    right: 1.4em;
+    opacity: 0;
+  }
+}

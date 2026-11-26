@@ -1,0 +1,34 @@
+---
+import LandingAnimation from '../LandingAnimation.astro';
+import '../../styles/Inicio.css';
+import CelularNuevo from '../CelularNuevo.astro';
+import ConversacionDemo from '../ConversacionDemo.astro';
+
+const messages = [
+  { sender: 'Cliente', time: '22:47', text: 'Hola, ¿a qué hora abren mañana?' },
+  { sender: 'Mensajex', time: '22:47', text: '¡Hola! Mañana abrimos a las 9:00. ¿En qué más te puedo ayudar?' },
+] as const;
+---
+
+<div class="landing-inicio">
+  <div class="Titulo">
+    <div class="logo1">
+      <LandingAnimation name="logo" />
+    </div>
+    <div class="Tarjeta-pre">
+      <p>Tu asistente personal inteligente, siempre disponible.</p>
+    </div>
+  </div>
+  <div class="Duo landing-demo">
+    <div class="RoboBro">
+      <LandingAnimation name="robot" />
+    </div>
+    <CelularNuevo id="telefono" chat>
+      <ConversacionDemo label="Ejemplo de atención fuera de horario" messages={messages} />
+    </CelularNuevo>
+  </div>
+  <div class="botones">
+    <button class="btn claro">Suscribirse</button>
+    <button class="btn oscuro">Ingresar</button>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+---
+interface Props {
+  label: string;
+  messages: readonly { sender: 'Cliente' | 'Mensajex'; time: string; text: string }[];
+}
+
+const { label, messages } = Astro.props;
+---
+
+<ol class="conversacion-demo" aria-label={label} data-chat>
+  {messages.map(({ sender, time, text }) => (
+    <li class:list={['mensaje', { 'mensaje-cliente': sender === 'Cliente' }]} data-chat-message>
+      <div class="remitente">
+        <strong>{sender}</strong>
+        <time datetime={time}>{time}</time>
+      </div>
+      <p>{text}</p>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .conversacion-demo {
+    display: grid;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: #172539;
+    font-size: 0.75rem;
+    line-height: 1.3;
+    text-align: left;
+  }
+
+  .mensaje {
+    justify-self: start;
+    max-width: 95%;
+    box-sizing: border-box;
+    padding: 0.45rem 0.55rem;
+    border-radius: 0.65rem;
+    background: #d9f3dc;
+  }
+
+  .mensaje-cliente {
+    justify-self: end;
+    background: #fff;
+  }
+
+  .mensaje p {
+    margin: 0.2rem 0 0;
+  }
+
+  .remitente {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    column-gap: 0.35rem;
+  }
+
+  .remitente time {
+    color: #495867;
+    font-size: 0.6875rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    [data-chat-revealed] {
+      animation: aparecer-mensaje 0.35s ease-out;
+    }
+
+    @keyframes aparecer-mensaje {
+      from {
+        opacity: 0;
+        transform: translateY(0.25rem);
+      }
+    }
+  }
+</style>

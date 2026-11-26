@@ -1,0 +1,20 @@
+---
+import '../styles/ListaFono.css';
+const { id = "phoneList" } = Astro.props;
+const NUM_COUNT = 7;
+
+// Genera un número aleatorio con formato
+function generatePhoneNumber() {
+  const random = Math.floor(1000000 + Math.random() * 8999000);
+  return `${String(random).slice(0, 2)}-${String(random).slice(2, 6)}####`;
+}
+
+// Estado inicial de números
+const initialNumbers = Array.from({ length: NUM_COUNT }, () => generatePhoneNumber());
+---
+
+<div class="phone-list" id={id} data-component="phone-list">
+  {initialNumbers.map((number, i) => (
+    <div class:list={["phone-number", `pos-${i}`, { faded: i === 0 || i === 6, "shift-small": i === 2 || i === 4, "shift-center center": i === 3 }]} data-index={i}>{number}</div>
+  ))}
+</div>

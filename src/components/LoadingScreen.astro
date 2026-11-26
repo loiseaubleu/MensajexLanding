@@ -1,0 +1,40 @@
+---
+import LandingAnimation from './LandingAnimation.astro';
+import '../styles/loading.css';
+---
+
+<div class="loading-overlay" id="loadingOverlay" hidden>
+  <div class="loading-scene">
+    <div class="loading-robot">
+      <LandingAnimation name="robot" />
+    </div>
+    <div class="loading-spinner" aria-label="Cargando">
+      <div class="loading-circle">
+        <span class="loading-percentage">0%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const overlay = document.getElementById('loadingOverlay');
+    const timeout = window.setTimeout(dismiss, 15000);
+
+    function dismiss() {
+      window.clearTimeout(timeout);
+      overlay.removeEventListener('landing:ready', dismiss);
+      overlay.classList.add('loading-dismissed');
+      window.setTimeout(() => {
+        overlay.hidden = true;
+        overlay.dispatchEvent(new Event('landing:dismissed'));
+      }, 200);
+    }
+
+    overlay.addEventListener('landing:intro-started', () => window.clearTimeout(timeout), { once: true });
+    overlay.addEventListener('landing:ready', dismiss, { once: true });
+    overlay.hidden = false;
+  })();
+</script>

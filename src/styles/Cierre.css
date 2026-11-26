@@ -1,0 +1,108 @@
+.landing-cierre {
+  min-height: 100vh;
+  /* padding: clamp(1rem, 4vw, 2rem) clamp(0.5rem, 3vw, 1rem); */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  /* transition: opacity 0.8s ease; */
+}
+
+.robot-wrapper {
+  width: clamp(180px, 40vw, 300px);
+  transition: opacity 0.8s ease;
+  height: clamp(180px, 40vw, 300px);
+  max-width: 50vw;
+}
+.robot-wrapper.transit{
+  transition: height 0.8s ease, width 0.8s ease;
+}
+.robot-wrapper.dissappear{
+  height: 0;
+  width: 0;
+}
+.robot-wrapper.initial{
+  width: 100%;  
+}
+.contenido4 {
+  text-align: center;
+  margin-top: clamp(1rem, 3vw, 1.5rem);
+}
+
+.botones4 {
+  margin-top: clamp(0.5rem, 2vw, 1rem);
+  display: flex;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  flex-wrap: wrap;
+  justify-content: center;
+  transition: 0.8s opacity ease;
+}
+
+.botones4 .btn {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.6rem);
+  color: #0773b1;
+  background: rgba(27, 10, 23, 0.6);
+  padding: clamp(0.4rem, 1.5vw, 0.6rem) clamp(1.2rem, 4vw, 1.8rem);
+  border-radius: 999px;
+  border: 2px solid rgba(27, 10, 23, 0.6);
+  box-shadow: 0 0 30px #0773b1;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  min-width: clamp(100px, 40vw, 300px);
+}
+
+.botones4 .btn:hover {
+  background: rgba(66, 23, 55, 0.8);
+  color: #00ffff;
+  box-shadow: 0 0 18px #00ffff80;
+  transform: scale(1.05);
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.logo-cont {
+  width: clamp(270px, 90vw, 600px);
+  height: auto;
+  margin: 0 auto;
+  transition: 0.4s opacity ease;
+}
+.meta-long{
+  min-width: 280px;
+  display: inline-block;
+}
+
+@media (max-width: 48rem) {
+  .landing-cierre {
+    box-sizing: border-box;
+    padding: 3rem clamp(0.875rem, 4vw, 2rem);
+  }
+
+  .meta-long {
+    min-width: 0;
+    width: min(100%, 25rem);
+  }
+
+  .logo-cont {
+    width: min(100%, 18rem);
+  }
+
+  .botones4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr));
+  }
+
+  .botones4 .btn {
+    min-width: 0;
+    min-height: 2.75rem;
+    padding-inline: 0.45rem;
+    font-size: clamp(0.8rem, 3.2vw, 1rem);
+  }
+}

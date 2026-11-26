@@ -1,0 +1,44 @@
+---
+import LandingAnimation from '../LandingAnimation.astro';
+import '../../styles/AtencionAutomatica.css';
+import CelularNuevo from '../CelularNuevo.astro';
+import ConversacionDemo from '../ConversacionDemo.astro';
+
+const messages = [
+  { sender: 'Mensajex', time: '20:15', text: '¡Hola! ¿En qué puedo ayudarte hoy?' },
+  { sender: 'Cliente', time: '20:15', text: 'Hola, ¿qué planes tienen?' },
+  { sender: 'Mensajex', time: '20:16', text: 'Puedo mostrarte los planes y responder tus preguntas.' },
+  { sender: 'Mensajex', time: '20:16', text: 'Estoy disponible 24/7.' },
+] as const;
+---
+
+<div class="landing-atencion">
+  <div class="Titulo2">
+    <div class="logo2">
+      <LandingAnimation name="logo" />
+    </div>
+  </div>
+
+  <div class="PreDesc">
+    <h2>Atención automática 24/7 para tus clientes</h2>
+  </div>
+
+  <div class="Descripcion">
+    <h3>
+      Nuestro servicio de bot permite que tu negocio esté siempre disponible, incluso cuando vos no podés estar...
+    </h3>
+  </div>
+
+  <div class="Dialogo landing-demo">
+    <div class="MrRobotin">
+      <LandingAnimation name="robot" />
+    </div>
+
+    <!-- Conversación dentro del celular -->
+    <div class="telefono-container">
+      <CelularNuevo id="celular2" chat>
+        <ConversacionDemo label="Ejemplo de atención automática" messages={messages} />
+      </CelularNuevo>
+    </div>
+  </div>
+</div>

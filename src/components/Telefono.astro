@@ -1,0 +1,94 @@
+---
+const { children } = Astro.props;
+---
+
+<div id="telefono" class="phone-frame">
+  <div class="top-bar"></div>
+  <div class="screen">
+    <slot />
+  </div>
+  <div class="home-button"></div>
+</div>
+
+<style>
+.phone-frame {
+  width: clamp(90px, 25vw, 160px);
+  min-width: 140px;
+  aspect-ratio: 5 / 9;
+  background: #000;
+  border-radius: clamp(10px, 2.5vw, 30px);
+  padding: clamp(10px, 2vw, 21px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.phone-frame.mostrar {
+  opacity: 1;
+}
+
+.top-bar {
+  width: clamp(40%, 50%, 60%);
+  height: calc(0.03 * clamp(150px, 80vw, 300px));  /* Ajustado para que sea proporcional */
+  background: #fff;
+  border-radius: 9999px;
+  margin-bottom: clamp(10px, 1vw, 15px);  /* Espacio adaptativo */
+}
+
+.screen {
+  background: white;
+  flex-grow: 1;
+  width: 100%;
+  border-radius: calc(0.04 * clamp(150px, 80vw, 300px));
+  overflow: hidden;
+}
+
+.home-button {
+  width: clamp(20px, 4vw, 40px);
+  height: clamp(20px, 4vw, 40px);
+  background: #fff;
+  border-radius: 50%;
+  margin-top: clamp(8px, 1.5vw, 10px);
+}
+
+  @media (max-width: 600px) {
+  .phone-frame {
+    width: 25vw;
+    min-width: auto;
+    padding: 8px;
+    border-radius: 18px;
+    left: 0;
+    margin: 0 auto;
+  }
+
+    .home-button {
+    width: 10px;
+    height: 10px;
+    margin-top: 6px;
+  }
+}
+
+@media (min-width: 1020px) and (max-width: 1040px) and (min-height: 590px) and (max-height: 610px) {
+  .phone-frame {
+    width: 5vw;
+    min-width: 100px;
+    padding: 8px;
+    border-radius: 18px;
+    left: 0;
+    margin: 0 auto;
+  }
+
+  .home-button {
+    width: 15px;
+    height: 15px;
+    margin-top: 6px;
+  }
+}
+
+</style>
+
+

@@ -1,0 +1,26 @@
+---
+import ListaFono from '../ListaFono.astro';
+import LandingAnimation from '../LandingAnimation.astro';
+import '../../styles/ControlTelefonico.css';
+
+---
+
+<div class="landing-control">
+  <div class="Titulo3">
+    <LandingAnimation name="logo" />
+  </div>
+
+  <div class="Explic">
+    <h2>Implementa un control de acceso telefónico robusto.</h2>
+    <h2>Utiliza la blacklist para bloquear a los números no deseados o la whitelist para solo permitir ciertos números telefónicos.</h2>
+  </div>
+
+  <div class="accion landing-demo">
+    <div class="mr-container3">
+      <LandingAnimation name="robot" />
+    </div>
+    <div class="cel">
+      <ListaFono id="fono" />
+    </div>
+  </div>
+</div>
